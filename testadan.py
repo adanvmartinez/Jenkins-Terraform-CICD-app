@@ -30,5 +30,5 @@ class TestAdan(unittest.TestCase):
 
     def test_ninth_word(self) -> None:
         self.assertEqual("Terraform!", self.words[8])
-if __name__ == '__main__':
-    unittest.main()
+#if __name__ == '__main__':
+#    unittest.main()
