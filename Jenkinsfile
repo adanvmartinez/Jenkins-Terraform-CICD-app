@@ -28,14 +28,18 @@ pipeline{
             steps{
                 withAWS(credentials:'jenkins-test-app-credentials',region:'us-west-1'){
                     sh 'aws iam list-users'
+                    
                 }
             }
         }
-        // stage('Terraform plan'){
-        //     steps{
-        //         sh 'terraform plan'
-        //     }
-        // }
+        stage('Terraform plan'){
+            steps{
+                withAWS(credentials:'jenkins-test-app-credentials',region:'us-west-1'){
+                    sh 'terraform plan'
+                    
+                }
+            }
+        }
         // stage('terraform apply') {
         //     steps{
         //         sh 'terraform apply --auto-approve'
