@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: python-unittest-app
+spec:
+  selector:
+    matchLabels:
+      app: python-unittest-app
+  replicas: 3
+  strategy: 
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: python-unittest-app
+    spec:
+      containers:
+      - name: python-unittest-app
+        image: 858952941568.dkr.ecr.us-west-1.amazonaws.com/jenkins-test-app:latest
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 80
+          protocol: TCP
