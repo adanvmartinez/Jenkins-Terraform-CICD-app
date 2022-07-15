@@ -17,5 +17,5 @@ class TestIndex(unittest.TestCase):
     def test_fifth_char(self) -> None:
         self.assertEqual("o", index.get_hello()[4])
 
-if __name__ == '__main__':
-    unittest.main()
+#if __name__ == '__main__':
+#    unittest.main()
