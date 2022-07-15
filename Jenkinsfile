@@ -8,13 +8,13 @@ pipeline{
                 echo 'Checked out Repository...'
             }
         }
-        stage("Build App"){
+        stage("Test App"){
             steps{
                 sh 'python3 app/testadan.py app/testindex.py'
                 echo 'Ran tests...'
             }
         }
-        stage('Terraform format check') {
+        stage('Terraform Format Check') {
             steps{
                 sh 'terraform fmt'
             }
@@ -24,7 +24,7 @@ pipeline{
                 sh 'terraform init'
             }
         }
-        stage('Check AWS Credentials'){
+        stage('Check AWS Credentials/Terraform Plan'){
             steps{
                 withAWS(credentials:'jenkins-test-app-credentials',region:'us-west-1'){
                     sh 'aws iam list-users'
@@ -32,14 +32,14 @@ pipeline{
                 }
             }
         }
-        stage('Terraform plan'){
-            steps{
-                withAWS(credentials:'jenkins-test-app-credentials',region:'us-west-1'){
-                    sh 'terraform plan'
+        // stage('Terraform Plan'){
+        //     steps{
+        //         withAWS(credentials:'jenkins-test-app-credentials',region:'us-west-1'){
+        //             sh 'terraform plan'
                     
-                }
-            }
-        }
+        //         }
+        //     }
+        // }
         // stage('terraform apply') {
         //     steps{
         //         sh 'terraform apply --auto-approve'
