@@ -123,10 +123,10 @@ resource "aws_main_route_table_association" "terraform_main_RT_association" {
 # # }
 
 # #Crete ssh key
-resource "aws_key_pair" "ssh_key" {
-  key_name = "asus-key"
-  public_key = file("${var.ssh-key}")
-}
+#resource "aws_key_pair" "ssh_key" {
+  #key_name = "asus-key"
+  #public_key = file("${var.ssh-key}")
+#}
 
 
 
