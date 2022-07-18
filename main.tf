@@ -140,7 +140,7 @@ resource "aws_main_route_table_association" "terraform_main_RT_association" {
 resource "aws_instance" "terraform_instance" {
   ami = data.aws_ami.amazon-linux.id
   instance_type = "t2.micro"
-  key_name = aws_key_pair.ssh_key.id
+  #key_name = aws_key_pair.ssh_key.id
   vpc_security_group_ids = [aws_security_group.terraform_allow_ssh.id]
   subnet_id = aws_subnet.terraform_public_subnet.id
   associate_public_ip_address = true
