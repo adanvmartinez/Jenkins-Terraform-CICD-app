@@ -50,7 +50,7 @@ pipeline{
                     //sh 'terraform show -no-color tfplan > tfplan.txt'
                     sh 'pwd'
                     sh 'ls -a'
-                    sh 'terraform apply --auto-approve'
+                    //sh 'terraform apply --auto-approve'
                     
                 }
             }
