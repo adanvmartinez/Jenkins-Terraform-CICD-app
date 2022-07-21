@@ -34,25 +34,5 @@ pipeline{
                 }
             }
         }
-        // stage('Terraform Plan'){
-        //     steps{
-        //         withAWS(credentials:'jenkins-test-app-credentials',region:'us-west-1'){
-        //             sh 'terraform plan'
-                    
-        //         }
-        //     }
-        // }
-         stage('Terraform Apply') {
-             steps{
-                 echo 'Terraform Apply Stage...'
-                 //sh 'terraform apply --auto-approve'
-             }
-         }
-        stage('Terraform Destroy') {
-             steps{
-                 echo 'Terraform Destroy Stage...'
-                 //sh 'terraform apply --auto-approve'
-             }
-         }
     }
 }
