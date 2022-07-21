@@ -42,8 +42,9 @@ pipeline{
         //         }
         //     }
         // }
-         stage('terraform apply') {
+         stage('Terraform Apply') {
              steps{
+                 echo 'Terraform Apply Stage...'
                  //sh 'terraform apply --auto-approve'
              }
          }
