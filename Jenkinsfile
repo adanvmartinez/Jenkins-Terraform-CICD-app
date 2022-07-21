@@ -48,5 +48,11 @@ pipeline{
                  //sh 'terraform apply --auto-approve'
              }
          }
+        stage('Terraform Destroy') {
+             steps{
+                 echo 'Terraform Destroy Stage...'
+                 //sh 'terraform apply --auto-approve'
+             }
+         }
     }
 }
