@@ -30,7 +30,7 @@ pipeline{
                     sh 'aws iam list-users'
                     //sh 'terraform plan -input=false -out tfplan'
                     //sh 'terraform show -no-color tfplan > tfplan.txt'
-                    
+                    echo 'listed my aws users'
                 }
             }
         }
