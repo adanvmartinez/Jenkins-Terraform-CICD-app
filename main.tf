@@ -157,7 +157,7 @@ module "eks" {
   cluster_version = "1.22"
   subnets         = [aws_subnet.terraform_public_subnet.id]
 
-  vpc_id = module.vpc.vpc_id
+  vpc_id = aws_vpc.adan-terraform-vpc.id
 
   node_groups = {
       desired_capacity = 3
