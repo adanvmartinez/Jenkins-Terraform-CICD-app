@@ -21,24 +21,24 @@ pipeline{
                 }
             }
         }
-        // //Initializes terraform files
-        // stage('Terraform Init') {
-        //     steps{
-        //         dir('terraform'){
-        //         sh 'pwd'
-        //         sh 'terraform init'
-        //         }
-        //     }
-        // }
-        // //Validate scripts
-        // stage('Terraform Validate') {
-        //     steps{
-        //         dir('terraform'){
-        //         sh 'pwd'
-        //         sh 'terraform validate'
-        //         }
-        //     }
-        // }
+        //Initializes terraform files
+        stage('Terraform Init') {
+            steps{
+                dir('terraform'){
+                sh 'pwd'
+                sh 'terraform init'
+                }
+            }
+        }
+        //Validate scripts
+        stage('Terraform Validate') {
+            steps{
+                dir('terraform'){
+                sh 'pwd'
+                sh 'terraform validate'
+                }
+            }
+        }
         // //Make sure we have access to AWS and start terraform planning
         // stage('Terraform Plan and Apply'){
         //     steps{
