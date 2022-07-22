@@ -64,7 +64,7 @@ pipeline{
                     //sh 'kubectl get pods --all-namespaces'
                     //sh 'kubectl config use-context arn:aws:eks:us-west-1:858952941568:cluster/terrafrom-lab-cluster'
                     sh 'kubectl get pods --all-namespaces'
-                    sh 'kubectl --kubeconfig ./kubeconfig apply -f deployment.yml'
+                    sh 'kubectl --kubeconfig apply -f deployment.yml'
                     sh 'kubectl --kubeconfig ./kubeconfig expose deployment/python-unittest-app  --port=80 --target-port=80  --name=nginx-service --type=LoadBalancer'
 
                     sh 'kubectl --kubeconfig ./kubeconfig get nodes'
