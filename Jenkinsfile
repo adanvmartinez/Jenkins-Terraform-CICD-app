@@ -5,17 +5,6 @@ pipeline{
     agent any
     
     stages{
-        // stage("Checkout Repo"){
-        //     steps{
-                
-        //         //checkout([$class: 'GitSCM',credentialsId: 'github-api-token', branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'git@github.com:adanvmartinez/CICD-pipeline-app.git']]])
-                
-        //         sh'git clone https://${github-api-token}@github.exampleco.com/org/repo.git'
-        //         echo 'Checked out Repository...'
-                
-        //     }
-        // }
-
         //Runs unit test apps
         stage("Test App"){
             steps{
@@ -26,6 +15,7 @@ pipeline{
         //Checks for any formatting errors in terreform syntax
         stage('Terraform Format Check') {
             steps{
+                sh 'cd terraform'
                 sh 'terraform fmt'
             }
         }
@@ -64,7 +54,8 @@ pipeline{
                     //sh 'kubectl get pods --all-namespaces'
                     //sh 'kubectl config use-context arn:aws:eks:us-west-1:858952941568:cluster/terrafrom-lab-cluster'
                     sh 'kubectl get pods --all-namespaces'
-                    //sh 'kubectl apply -f deployment.yml'
+                    sh 'kubectl --kubeconfig ./kubeconfig apply -f ../deployment.yml'
+                    sh 'kubectl --kubeconfig ./kubeconfig expose deployment/python-unittest-app \ --port=80 --target-port=80 \ --name=nginx-service --type=LoadBalancer'
                 }
             }
         }
@@ -73,7 +64,7 @@ pipeline{
             steps{
                 withAWS(credentials:'jenkins-test-app-credentials',region:'us-west-1'){
                     echo 'Destroy Stage'
-                    sh 'terraform destroy --auto-approve'
+                    //sh 'terraform destroy --auto-approve'
                     
                     
                 }
