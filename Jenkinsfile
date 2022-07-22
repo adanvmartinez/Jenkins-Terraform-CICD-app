@@ -81,7 +81,7 @@ pipeline{
                     sh 'kubectl describe service nginx-service'
 
                     sh 'kubectl get nodes'
-                    sh 'kubectl get pods -output=wide'
+                    sh 'kubectl get pods --output=wide'
 
                 }
             }
