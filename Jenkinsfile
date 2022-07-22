@@ -16,24 +16,27 @@ pipeline{
         stage('Terraform Format Check') {
             steps{
                 dir('terraform'){
-                sh 'pwd'}
+                sh 'pwd'
                 sh 'terraform fmt'
+                }
             }
         }
         //Initializes terraform files
         stage('Terraform Init') {
             steps{
                 dir('terraform'){
-                sh 'pwd'}
+                sh 'pwd'
                 sh 'terraform init'
+                }
             }
         }
         //Validate scripts
         stage('Terraform Validate') {
             steps{
                 dir('terraform'){
-                sh 'pwd'}
+                sh 'pwd'
                 sh 'terraform validate'
+                }
             }
         }
         //Make sure we have access to AWS and start terraform planning
@@ -41,14 +44,14 @@ pipeline{
             steps{
                 withAWS(credentials:'jenkins-test-app-credentials',region:'us-west-1'){
                     dir('terraform'){
-                    sh 'pwd'}
+                    sh 'pwd'
                     sh 'aws iam list-users'
                     sh 'terraform plan -input=false -out tfplan'
                     //sh 'terraform show -no-color tfplan > tfplan.txt'
                     sh 'pwd'
                     sh 'ls -a'
                     sh 'terraform apply --auto-approve'
-                    
+                    }
                 }
             }
         }
