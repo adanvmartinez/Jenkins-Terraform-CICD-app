@@ -15,21 +15,24 @@ pipeline{
         //Checks for any formatting errors in terreform syntax
         stage('Terraform Format Check') {
             steps{
-                sh 'cd terraform'
+                sh 'cd /terraform'
+                sh 'pwd'
                 sh 'terraform fmt'
             }
         }
         //Initializes terraform files
         stage('Terraform Init') {
             steps{
-                sh 'cd terraform'
+                sh 'cd /terraform'
+                sh 'pwd'
                 sh 'terraform init'
             }
         }
         //Validate scripts
         stage('Terraform Validate') {
             steps{
-                sh 'cd terraform'
+                sh 'cd /terraform'
+                sh 'pwd'
                 sh 'terraform validate'
             }
         }
@@ -37,7 +40,8 @@ pipeline{
         stage('Terraform Plan and Apply'){
             steps{
                 withAWS(credentials:'jenkins-test-app-credentials',region:'us-west-1'){
-                    sh 'cd terraform'
+                    sh 'cd /terraform'
+                sh 'pwd'
                     sh 'aws iam list-users'
                     sh 'terraform plan -input=false -out tfplan'
                     //sh 'terraform show -no-color tfplan > tfplan.txt'
