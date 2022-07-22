@@ -100,9 +100,10 @@ pipeline{
         stage('Destroy'){
             steps{
                 withAWS(credentials:'jenkins-test-app-credentials',region:'us-west-1'){
-                    echo 'Destroy Stage'
-                    sh 'terraform destroy --auto-approve'
-                    
+                    dir('terraform'){
+                        echo 'Destroy Stage'
+                        sh 'terraform destroy --auto-approve'
+                    }
                     
                 }
             }
