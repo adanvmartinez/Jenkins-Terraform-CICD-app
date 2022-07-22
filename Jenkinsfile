@@ -22,12 +22,14 @@ pipeline{
         //Initializes terraform files
         stage('Terraform Init') {
             steps{
+                sh 'cd terraform'
                 sh 'terraform init'
             }
         }
         //Validate scripts
         stage('Terraform Validate') {
             steps{
+                sh 'cd terraform'
                 sh 'terraform validate'
             }
         }
@@ -35,6 +37,7 @@ pipeline{
         stage('Terraform Plan and Apply'){
             steps{
                 withAWS(credentials:'jenkins-test-app-credentials',region:'us-west-1'){
+                    sh 'cd terraform'
                     sh 'aws iam list-users'
                     sh 'terraform plan -input=false -out tfplan'
                     //sh 'terraform show -no-color tfplan > tfplan.txt'
