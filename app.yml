@@ -1,0 +1,14 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: python-app
+spec:
+  template:
+    metadata:
+      name: python-app-pod
+    spec:
+      containers:
+      - name: python-app
+        image: adan/python-app
+        imagePullPolicy: Never
+      restartPolicy: Never
