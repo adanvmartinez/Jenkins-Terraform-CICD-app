@@ -29,8 +29,8 @@ resource "aws_route_table_association" "terraform-subnet2-association" {
 }
 
 //Sets the main route table tot the newly created route table
-resource "aws_main_route_table_association" "terraform-mainRT-association" {
-  vpc_id = aws_vpc.adan-terraform-vpc.id
-  route_table_id = aws_route_table.terraform-rt.id
+# resource "aws_main_route_table_association" "terraform-mainRT-association" {
+#   vpc_id = aws_vpc.adan-terraform-vpc.id
+#   route_table_id = aws_route_table.terraform-rt.id
   
-}
+# }
