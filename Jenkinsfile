@@ -78,7 +78,7 @@ pipeline{
                     sh 'kubectl expose deployment python-unittest-app  --port=80 --target-port=80  --name=nginx-service --type=LoadBalancer'
 
                     sh 'kubectl get service python-unittest-app' 
-                    sh 'kubectl describe service python-unittest-app'
+                    sh 'kubectl describe service nginx-service'
 
                     sh 'kubectl get nodes'
                     sh 'kubectl get pods -output=wide'
