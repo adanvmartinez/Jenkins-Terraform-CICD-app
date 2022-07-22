@@ -19,7 +19,7 @@ pipeline{
         //Runs unit test apps
         stage("Test App"){
             steps{
-                sh 'echo python3 app/testadan.py app/testindex.py'
+                sh 'python3 app/testadan.py app/testindex.py'
                 echo 'Ran tests...'
             }
         }
