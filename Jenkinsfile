@@ -66,10 +66,18 @@ pipeline{
                     sh 'kubectl get nodes'
                     sh 'kubectl get pods --all-namespaces'
                     sh 'kubectl apply -f deployment.yml'
-                    sh 'kubectl expose -f python-unittest-app  --port=80 --target-port=80  --name=nginx-service --type=LoadBalancer'
+                    sh 'kubectl get deployments python-unittest-app'
+                    sh 'kubectl describe deployments python-unittest-app'
+                    sh 'kubectl get replicasets'
+                    sh 'kubectl describe replicasets'
+
+                    sh 'kubectl expose deployment python-unittest-app  --port=80 --target-port=80  --name=nginx-service --type=LoadBalancer'
+
+                    sh 'kubectl get service python-unittest-app' 
+                    sh 'kubectl describe service python-unittest-app'
 
                     sh 'kubectl get nodes'
-                    sh 'kubectl get pods -o wide'
+                    sh 'kubectl get pods -output=wide'
 
                 }
             }
