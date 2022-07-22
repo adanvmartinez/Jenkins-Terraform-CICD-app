@@ -3,7 +3,7 @@
 
 //Creation of route table
 resource "aws_route_table" "terraform-rt" {
-    vpc_id = aws_vpc.terraform-lab-vpc.id
+    vpc_id = aws_vpc.adan-terraform-vpc.id
 
     route {
         cidr_block = "0.0.0.0/0"
@@ -18,7 +18,7 @@ resource "aws_route_table" "terraform-rt" {
 //Assigns the route table to the subnet in vpc
 resource "aws_route_table_association" "terraform-subnet1-association" {
   subnet_id = aws_subnet.terraform-subnet-1.id
-  route_table_id = aws_route_table.terraform-lab-rt.id
+  route_table_id = aws_route_table.terraform-rt.id
   
 }
 
@@ -30,7 +30,7 @@ resource "aws_route_table_association" "terraform-subnet2-association" {
 
 //Sets the main route table tot the newly created route table
 resource "aws_main_route_table_association" "terraform-mainRT-association" {
-  vpc_id = aws_vpc.terraform-lab-vpc.id
+  vpc_id = aws_vpc.adan-terraform-vpc.id
   route_table_id = aws_route_table.terraform-rt.id
   
 }

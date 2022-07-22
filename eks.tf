@@ -5,7 +5,7 @@ module "eks" {
     cluster_version = "1.22"
     subnet_ids = [aws_subnet.terraform-subnet-1.id, aws_subnet.terraform-subnet-2.id]
 
-    vpc_id = aws_vpc.terraform-lab-vpc.id
+    vpc_id = aws_vpc.adan-terraform-vpc.id
 
     eks_managed_node_groups ={
         desired_capacity = 3
