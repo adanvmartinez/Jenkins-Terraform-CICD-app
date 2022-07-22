@@ -42,8 +42,8 @@ resource "aws_security_group" "terraform_security_group" {
 }
 
 #Crete ssh key
-resource "aws_key_pair" "ssh_key" {
-  key_name = "server-ssh-key"
-  public_key = file("${var.ssh-key}")
-}
+# resource "aws_key_pair" "ssh_key" {
+#   key_name = "server-ssh-key"
+#   public_key = file("${var.ssh-key}")
+# }
 
